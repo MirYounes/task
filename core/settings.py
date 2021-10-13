@@ -136,3 +136,15 @@ REST_USE_JWT = True
 # JWT configs
 JWT_AUTH_COOKIE = 'jwt'
 JWT_AUTH_REFRESH_COOKIE = 'jwt-refresh'
+
+
+# cache configs
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
