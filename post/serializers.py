@@ -1,4 +1,3 @@
-from django.db import models
 from rest_framework import serializers
 from rating.models import Rating
 from .models import Post
