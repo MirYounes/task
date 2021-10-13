@@ -6,4 +6,4 @@ class PostConfig(AppConfig):
     name = 'post'
 
     def ready(self):
-        import products.signals
+        import post.signals
