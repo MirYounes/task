@@ -152,3 +152,6 @@ CACHES = {
         }
     }
 }
+
+# redis configs
+REDIS_PREFIX_POST = "post"
