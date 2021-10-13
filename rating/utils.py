@@ -5,8 +5,8 @@ import redis
 redis = redis.Redis(host='127.0.0.1', port='6379', db=2)
 
 
-def add_to_redis(post_id,rate):
-    post_name = f'{settings.REDIS_POST_PREFIX}_{post_id}'
+def add_rate_to_redis(post_id,rate):
+    post_name = f'{settings.REDIS_PREFIX_POST}_{post_id}'
 
     if redis.exists(post_name):
         redis.hincrby(post_name, 'total_rate', rate)
@@ -14,6 +14,13 @@ def add_to_redis(post_id,rate):
     else :
         redis.hset(post_name, 'total_rate', rate)
         redis.hset(post_name, 'numbers_rate', 1)
+
+
+def update_rate_to_redis(post_id,rate):
+    post_name = f'{settings.REDIS_PREFIX_POST}_{post_id}'
+
+    if redis.exists(post_name):
+        redis.hincrby(post_name, 'total_rate', rate)
 
 
 def get_from_redis(post_id):

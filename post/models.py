@@ -21,6 +21,6 @@ class Post(models.Model):
     def avg_rate(self):
         result = get_from_redis(self.id)
         try :
-            return result['total_rate']/result['numbers_rate']
+            return float(int(result['total_rate'])/int(result['numbers_rate']))
         except :
             return 0
