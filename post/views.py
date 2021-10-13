@@ -18,11 +18,11 @@ class PostListApi(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        #queryset = None
-        #if 'posts' in cache:
-        #    queryset = cache.get('posts')
-        #else :
-        #    queryset = Post.objects.all()
-        #   cache.set('posts', queryset, settings.CACHE_TIMEOUT_POSTS)
-        queryset = Post.objects.all()
+        queryset = None
+        if 'posts' in cache:
+            queryset = cache.get('posts')
+        else :
+            queryset = Post.objects.all()
+            cache.set('posts', queryset, settings.CACHE_TIMEOUT_POSTS)
+        
         return queryset
