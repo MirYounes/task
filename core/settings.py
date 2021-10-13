@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     # local apps
     'post.apps.PostConfig',
+    'rating.apps.RatingConfig',
 ]
 
 SITE_ID = 1
