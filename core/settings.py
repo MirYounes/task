@@ -131,7 +131,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    )
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 REST_USE_JWT = True
@@ -153,5 +156,14 @@ CACHES = {
     }
 }
 
+CACHE_TIMEOUT_POSTS = 900
+
 # redis configs
 REDIS_PREFIX_POST = "post"
+
+
+# paggination connfig
+PAGINATION_POST = 100
+PAGINATION_MAX_POST = 1000  
+
+

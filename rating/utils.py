@@ -17,7 +17,7 @@ def add_to_redis(post_id,rate):
 
 
 def get_from_redis(post_id):
-    post_name = f'{settings.REDIS_POST_PREFIX}_{post_id}'
+    post_name = f'{settings.REDIS_PREFIX_POST}_{post_id}'
 
     if redis.exists(post_name):
         data = {key.decode('utf-8'): value.decode('utf-8')

@@ -1,4 +1,4 @@
-from django.db import models,
+from django.db import models
 from rating.utils import get_from_redis
 
 

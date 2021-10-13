@@ -5,13 +5,13 @@ from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    numbers_rate = serializers.ReadOnlyField(source='numbers_rate')
-    avg_rate = serializers.ReadOnlyField(source='avg_rate')
-    user_rate = serializers.IntegerField()
+    numbers_rate = serializers.ReadOnlyField()
+    avg_rate = serializers.ReadOnlyField()
+    user_rate = serializers.SerializerMethodField('get_user_rate')
 
     class Meta:
-        models = Post
-        fields = ['title','body','numbers_rate','avg_rate']
+        model = Post
+        fields = ['title','body','numbers_rate','avg_rate','user_rate']
     
     def get_user_rate(self, obj):
         user =  self.context['request'].user
@@ -20,5 +20,5 @@ class PostSerializer(serializers.ModelSerializer):
             rate = Rating.objects.get(user=user,post=obj)
         except Rating.DoesNotExist:
             return None
-            
+
         return rate.rate
